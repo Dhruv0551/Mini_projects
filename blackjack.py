@@ -1,15 +1,20 @@
 import random
 
-cards = [2,3,4,5,6,7,8,9,10,10,10,10]
+cards = [2,3,4,5,6,7,8,9,10,10,10,10,11]
 limit = 21
 min_limit = 16
 
 
-def total(num):
-	sumofcards = 0
-	for i in num:
-		sumofcards+=i		
-	return sumofcards
+def total(cards):
+    total = sum(cards)
+    aces = cards.count(11)
+
+    while total > 21 and aces:
+        total -= 10
+        aces -= 1
+
+    return total
+
 
 
 while True:
