@@ -12,4 +12,6 @@ for question in question_data:
 
 
 quiz = QuizBrain(q_list)
-quiz.nextQuestion()
+
+while quiz.stillHasQuestions():
+	quiz.nextQuestion()
