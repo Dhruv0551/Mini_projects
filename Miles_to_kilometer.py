@@ -1,18 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[134]:
-
-
 from tkinter import *
 
-
-# Defining The Conversion Function
-
-# In[135]:
-
-
-def conversion(miles_entry=0):
+# Conversion function
+def conversion(miles_entry):
     try:
         miles = float(miles_entry.get())
         km = round(miles * 1.609344, 2)  # More accurate conversion factor
@@ -20,66 +9,39 @@ def conversion(miles_entry=0):
     except ValueError:
         return "Invalid input"
 
-
-# In[136]:
-
-
+# Button click handler
 def onConvert():
-    result=conversion(miles)
+    result = conversion(miles)
     kms.config(text=result)
 
-
-# Starting Code
-
-# In[137]:
-
-
+# Create main window
 window = Tk()
+window.title("Miles to Kilometers Converter")
+window.config(padx=20, pady=20)
 
+# Input field
+miles = Entry(width=15)
+miles.grid(column=1, row=0, padx=5, pady=5)
 
-# In[138]:
-
-
-miles = Entry(width=10)
-miles.grid(column=1,row=0)
-
-
-# In[139]:
-
-
+# Miles label
 label = Label(text="Miles")
-label.grid(column=2,row=0) 
+label.grid(column=2, row=0, padx=5, pady=5)
 
+# "Is Equal to" label
+label2 = Label(text="Is Equal to:")
+label2.grid(column=0, row=1, padx=5, pady=5)
 
-# Middle Grid
+# Result display
+kms = Label(text="0", font=("Arial", 12, "bold"))
+kms.grid(column=1, row=1, padx=5, pady=5)
 
-# In[140]:
-
-
-label2 = Label(text="Is Equal to: ")
-label2.grid(column=0,row=1)
-
-
-# In[141]:
-
-
-kms = Label(text="0")
-kms.grid(column=1,row=1)
-
-
-# In[142]:
-
-
+# KM label
 label3 = Label(text="KM")
-label3.grid(column=0,row=2)
+label3.grid(column=2, row=1, padx=5, pady=5)
 
+# Calculate button
+calc = Button(text="Calculate", command=onConvert, bg="lightblue")
+calc.grid(column=1, row=2, padx=5, pady=10)
 
-# Last Row
-
-# In[143]:
-
-
-calc = Button(text="Calculate",command=onConvert)
-calc.grid(column=1,row=2)
+# Start the GUI
 window.mainloop()
-
